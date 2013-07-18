@@ -1,0 +1,31 @@
+<%# describes about each todo %>
+<div class="box hoverable padding-10 box-border-black">
+	
+  <div id="div_todo_<%= todo.id %>_form" class="hide"></div>
+  
+  <div class="pull-left">
+    <%= link_to todo.title, todo_path(todo), :remote=>true, :class=>"text-color-blue font-size-16" %></br>
+	</div>
+  <div class="pull-right text-color-red font-size-12">
+    <%= display_time(todo.created_at) %>
+  </div>
+  
+  <div class="cl"></div>
+  
+	<div class="padding-5">
+	  <%= scrap_word(todo.details, 200) %>
+	</div>
+  
+  <div class="cl"></div>
+  
+  <%= content_tag :div, :class=>"pretty small danger btn icon-left icon-trash margin-left-10 pull-right" do %>
+    <%= link_to "Delete", todo_path(todo), method: :delete, data: { confirm: 'Are you sure?' }, :remote=>true %>
+  <% end %>
+  
+  <%= content_tag :div, :class=>"pretty small medium primary btn icon-left icon-pencil margin-left-10 pull-right" do %>
+    <%= link_to "Edit", edit_todo_path(todo), :remote=>true %>
+  <% end %>
+  
+  <div class="cl"></div>
+  
+</div>

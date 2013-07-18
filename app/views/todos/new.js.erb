@@ -1,0 +1,4 @@
+// Show the new form in the right box.
+$('#div_todo_details').show();
+$('#div_todo_details').html("<%= escape_javascript(render(:partial=>"new")) %>");
+validateTodoForm();

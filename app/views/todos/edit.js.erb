@@ -1,0 +1,4 @@
+// Show the edit form in the right box
+$('#div_todo_<%= @todo.id %>_form').html("<%= escape_javascript(render(:partial=>"edit")) %>");
+$('#div_todo_<%= @todo.id %>_form').show();
+validateTodoForm();

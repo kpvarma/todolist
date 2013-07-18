@@ -1,0 +1,38 @@
+
+<%# Displays a detailed view of the todo %>
+<%# Display Flash Message if any only in case of ajax request %>
+<% if request.xhr? %>
+	<%= render :partial=>"layouts/common/flash_message" %>
+<% end %>
+
+<div class="box padding-10">
+	
+	<div class="margin-10 text-color-blue font-size-24">
+		<%= @todo.title %>
+	</div>
+  
+  
+	
+	
+	<div class='italic margin-10'><%= simple_format @todo.details %></div>
+	
+  <div class="cl-20"></div>
+  
+  <div class="palette-footer margin-left-10">
+  
+    <div class="pull-left text-color-red font-size-12">
+      <%= display_time(@todo.created_at) %>
+    </div>
+    
+    <%= content_tag :div, :class=>"pretty small danger btn icon-left icon-trash margin-left-10 pull-right" do %>
+      <%= link_to "Delete", todo_path(@todo), method: :delete, data: { confirm: 'Are you sure?' }, :remote=>true %>
+    <% end %>
+    
+    <%= content_tag :div, :class=>"pretty small medium primary btn icon-left icon-pencil margin-left-10 pull-right" do %>
+      <%= link_to "Edit", edit_todo_path(@todo), :remote=>true %>
+    <% end %>
+    
+    <div class="cl-10"></div>
+  </div>
+
+</div>

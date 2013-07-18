@@ -1,0 +1,17 @@
+<% if @todos.any? %>
+
+	// Fill the right box with first todo details in the list
+	// $('#div_todo_details').html("<%#= escape_javascript(render(:partial=>'show')) %>");
+	
+	// Rendering the item list
+	$('#div_todo_index').html("<%= escape_javascript(render(:partial=>"index")) %>");
+	
+<% else %>
+
+  var noResultsText = "<div class=\"box text-color-grey padding-80 text-align-center\" style=\"height:200px;\">No Todos found.</div>";
+	$('#div_todo_details').html(noResultsText);
+	$('#div_todo_index').html(noResultsText);
+
+<% end %>
+
+$('#div_todo_details').hide();

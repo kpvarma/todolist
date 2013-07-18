@@ -1,0 +1,47 @@
+<div class="row">
+  
+	<div class="eight columns push_two">
+    
+    <%# Displays to Manage the items %>
+    <div class="padding-top-10 margin-left-0">
+      
+      <div class="row">
+        
+        <div class="six columns">
+          <%= content_tag :span, "Manage Todos", :class=>"font-size-24 bold text-color-grey" %>
+        </div>
+
+      	<div id="div_todo_filters" class="six columns">
+      		<%= render :partial=>"filters" %>
+      	</div>
+        
+    	</div>
+    	<div class="cl-20"></div>
+    </div>
+	
+    <div id="div_todo_details">
+      <%#= render :partial=>"new" %>	
+  		<% case	params[:action] %>
+  		<% when "new", "edit", "show" %>
+  			<%#= render :partial=>params[:action] %>
+  		<% when "index" %>	
+  			<% if @todos.empty? %>
+  				<%#= render :partial=>"summary" %>
+  			<% else %>
+  				<%#= render :partial=>"show" %>	
+  			<% end %>
+  		<% else %>
+  			<%#= render :partial=>"summary" %>	
+  		<% end %>
+  	</div>
+  
+    <%# Renders a partial to display all the todos %>
+  	<div id="div_todo_index">
+  		<%= render :partial=>"index" %>
+  	</div>
+    
+	</div>
+	
+</div>
+
+

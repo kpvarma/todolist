@@ -1,0 +1,14 @@
+<% if @todo.errors.blank? %>
+
+	// Fill the right box with first todo details
+	// $('#div_todo_details').html("<%#= escape_javascript(render(:partial=>'show')) %>");
+	
+	// Render health care todos List
+  $('#div_todo_collections').html("<%= escape_javascript(render(:partial=>'index')) %>");
+
+<% else %>
+	
+	// Render the show partial to show flash message
+	// $('#div_todo_details').html("<%#= escape_javascript(render(:partial=>'show')) %>");
+	
+<% end %>

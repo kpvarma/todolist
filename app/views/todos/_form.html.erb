@@ -1,0 +1,58 @@
+
+<%# Renders a partial which is used to create a new todo %>
+<%= form_for(@todo, :html => {:id=>"form_todo", :class=>"margin-bottom-0", :method => (@todo.new_record? ? :post : :put), :remote=>true}) do |f| %>
+
+  <%= @todo.errors[:base].to_sentence %>
+  
+  <%= hidden_field_tag :faction, @todo.new_record? ? todos_path : todo_path(@todo) %>
+  <%= hidden_field_tag :fmethod, @todo.new_record? ? "POST" : "PUT" %>
+
+  <div class="form-inputs">
+    
+
+    <!-- Title (string) -->
+    <%= render :partial=>"field", :locals=>{:object=>@todo, 
+                                            :object_name=>'todo', 
+                                            :field_name=>'title', 
+                                            :display_name=>'Title', 
+                                            :field_type=>'string', 
+                                            :input_type=>'text', 
+                                            :required=>true, 
+                                            :place_holder=>"e.g: Put a suitable example here."} %>
+
+    <!-- Details (text) -->
+    <%= render :partial=>"field", :locals=>{:object=>@todo, 
+                                            :object_name=>'todo', 
+                                            :field_name=>'details', 
+                                            :display_name=>'Details', 
+                                            :field_type=>'text', 
+                                            :input_type=>'textarea', 
+                                            :required=>true, 
+                                            :place_holder=>"e.g: Put a suitable example here."} %>
+    
+  </div>
+  
+	<div class="cl-10"></div>
+	
+	<% button_text = "#{@todo.new_record? ? "Create" : "Update"} Item" %>
+   <div class="pull-right">
+   
+			<% if @todo.new_record? %>
+        <%= content_tag :div, :class=>"pretty medium default btn icon-left icon-cancel" do %>
+				  <%= link_to "Cancel", "#", :remote=>true %>
+        <% end %>
+			<% else %>
+        <%= content_tag :div, :class=>"pretty medium default btn icon-left icon-back" do %>
+				  <%= link_to 'Back', todos_path, :remote => true unless @todo.new_record? %>
+			  <% end %>
+			<% end %>
+      
+      <%= content_tag :div, :class=>"pretty medium primary btn icon-left icon-plus-squared margin-left-10" do %>
+        <%= submit_tag button_text, "data-reset-text"=>button_text, "data-loading-text"=>"Saving ..." %>
+      <% end %>
+      
+   </div>
+	<div class="cl-10"></div>
+		
+<% end %>
+

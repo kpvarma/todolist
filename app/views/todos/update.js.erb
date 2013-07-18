@@ -1,0 +1,23 @@
+<% if @todo.errors.blank? %>
+	
+	// Fill the right box with first item details
+  // $('#div_todo_details').html("<%#= escape_javascript(render(:partial=>"show")) %>");
+	$('#div_todo_details').hide();
+  $('#div_todo_<%= @todo.id %>_form').show();
+  
+	// Refresh the updated item in the list
+  $("#div_todo_<%= @todo.id %>").html("<%= escape_javascript(render :partial => 'item', :locals => { :todo => @todo }) %>")
+
+<% else %>
+	
+	// Reload the form partial to display errors
+  $('#div_todo_details').html("<%= escape_javascript(render(:partial=>"edit")) %>");
+  
+  // Validate the form
+  validateTodoForm();
+  
+  // Populate Server Side Errors
+  errorMessages = <%= @todo.errors.full_messages.to_json.html_safe %>;
+  populateServerSideErrors('todo', errorMessages);
+  
+<% end %>
