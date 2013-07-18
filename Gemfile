@@ -33,7 +33,8 @@ group :doc do
 end
 
 gem "handy-css-rails", "0.0.4"
-gem 'humdrum-rails', :path => '/Users/krishnan/Projects/VarmaLabs/OpenSource/humdrum'
+#gem 'humdrum-rails', :path => '/Users/krishnan/Projects/VarmaLabs/OpenSource/humdrum'
+gem 'humdrum-rails', "0.0.7"
 gem 'jquery-validation-rails'
 gem 'protected_attributes'
 gem 'kaminari'
